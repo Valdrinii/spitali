@@ -1,0 +1,20 @@
+.sidebar {
+    background-color: #343a40;
+    color: #fff;
+    height: 100vh;
+    padding: 20px;
+}
+.sidebar .nav-item .nav-link {
+    color: #fff;
+}
+.sidebar .nav-item .nav-link:hover {
+    background-color: #6c757d;
+}
+
+.dropdown-menu .dropdown-item {
+    color: #343a40;
+}
+.dropdown-menu .dropdown-item:hover {
+   background-color: #f8f9fa;
+   color: #343a40;
+ }
