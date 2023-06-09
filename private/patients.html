@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Admin</title>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Admin</a>
+    </div>
+  </nav>
+
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-2">
+      <div class="sidebar">
+        <ul class="nav flex-column">
+          <!-- Sidebar Item 1 -->
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Dashboard</a>
+          </li>
+          <!-- Patients -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Patients
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownLink">
+              <li><a class="dropdown-item" href="add-patient.html">Add Patient</a></li>
+              <li><a class="dropdown-item" href="patients.html">View Patient</a></li>
+            </ul>
+          </li>
+          <!-- Doctors -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Doctors
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownLink">
+              <li><a class="dropdown-item" href="#">Add Doctor</a></li>
+              <li><a class="dropdown-item" href="#">View Doctors</a></li>
+            </ul>
+          </li>
+          <!-- Appointments -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Appointments
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownLink">
+              <li><a class="dropdown-item" href="#">Add Appointment</a></li>
+              <li><a class="dropdown-item" href="#">View Appointments</a></li>
+            </ul>
+          </li>
+          <!-- Departments -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Departments
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownLink">
+              <li><a class="dropdown-item" href="#">Add Department</a></li>
+              <li><a class="dropdown-item" href="#">View Departments</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Back</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-10">
+      <div id="layoutSidenav_content">
+        <main>
+          <div class="container-fluid">
+            <h1 class="mt-4">Patients</h1>
+            <div class="row">
+              <div class="col-12">
+                <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Identity Number</th>
+                        <th>Email</th>
+                        <th>Created at</th>
+                        <th>Updated at</th>
+                        <th>Edit</th>
+                        <!--<th>Delete</th>-->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Filan</td>
+                        <td>Fisteku</td>
+                        <td>12345678</td>
+                        <td>filan.fisteku@gmail.com</td>
+                        <td>2021-03-05</td>
+                        <td>2023-06-23</td>
+                        <td><a href="edit-patient.html"><button class="btn btn-primary">Edit</button></a></td>
+                        <!--<td><button class="btn btn-primary">Delete</button></td>-->
+                      </tr>
+                      <tr>
+                        <td>Filan</td>
+                        <td>Fisteku2</td>
+                        <td>87654321</td>
+                        <td>filan.fisteku2@outlook.com</td>
+                        <td>2022-06-21</td>
+                        <td>2022-06-25</td>
+                        <td><a href="edit-patient.html"><button class="btn btn-primary">Edit</button></a></td>
+                        <!--<td><button class="btn btn-primary">Delete</button></td>-->
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
