@@ -10,9 +10,9 @@ if (isset($_POST['add-patient'])){
   $patient->identity_number = $_POST['identity_number'];
   $patient->email = $_POST['email'];
   $patient->password = $_POST['password'];
+  $patient->role = $_POST['role'];
   $patient->save();
 } 
-
 ?>
       
       <!-- Main Content -->
@@ -48,6 +48,10 @@ if (isset($_POST['add-patient'])){
                       <div class="form-group my-2">
                         <label class="small mb-1" for="password">Password:</label>
                         <input class="form-control py-2" name="password" id="password" type="password" placeholder="Enter password" />
+                      </div>
+                      <div class="form-group my-2">
+                        <label class="small mb-1" for="role">Role:</label>
+                        <input class="form-control py-2" name="role" id="role" type="text" placeholder="Enter role" />
                       </div>
                       <div class="my-2 py-2">
                         <input class="btn btn-primary" id="login" value="Create Patient" type="submit" name="add-patient" />

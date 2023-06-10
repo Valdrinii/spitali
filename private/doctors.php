@@ -1,7 +1,19 @@
-<?php include "inc/navbar.php" ?>
+<?php include "inc/navbar.php";
+ include "inc/sidenav.php";
 
-<?php include "inc/sidenav.php" ?>
+ 
+ $doctors = Doctor::orderBy("id","desc")->get();
+ 
+ if (isset($_POST['id'])){
+     $doctor = Doctor::findOrFail($_POST['id']);
+ }
+ if (isset($_POST['delete-doctor'])){
+     $doctor->delete();
+ }
+ 
 
+
+?>
 <!-- Main Content -->
     <div class="col-md-10">
       <div id="layoutSidenav_content">
@@ -26,28 +38,26 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Filan</td>
-                        <td>Fisteku</td>
-                        <td>1</td>
-                        <td>filan.fisteku@gmail.com</td>
-                        <td>123456</td>
-                        <td>2021-03-05</td>
-                        <td>2023-06-23</td>
-                        <td><a href="edit-doctor.php"><button class="btn btn-primary">Edit</button></a></td>
-                        <!--<td><button class="btn btn-primary">Delete</button></td>-->
-                      </tr>
-                      <tr>
-                        <td>Filan</td>
-                        <td>Fisteku2</td>
-                        <td>1</td>
-                        <td>filan.fisteku2@gmail.com</td>
-                        <td>123456</td>
-                        <td>2021-03-05</td>
-                        <td>2023-06-23</td>
-                        <td><a href="edit-doctor.php"><button class="btn btn-primary">Edit</button></a></td>
-                        <!--<td><button class="btn btn-primary">Delete</button></td>-->
-                      </tr>
+                    <?php
+                       foreach($doctors as $doctor){
+                           echo "<tr>";
+                           echo "<td>$doctor->firstname</td>";
+                           echo "<td>$doctor->lastname</td>";
+                           echo "<td>$doctor->email</td>";
+                           echo "<td>$doctor->role</td>";
+                           echo "<td>$doctor->created_at</td>";
+                           echo "<td>$doctor->updated_at</td>";
+                           echo "<td><form method='post' action='edit-doctor.php'>
+                                <input type='hidden' name='id' id='' value='$doctor->id'>
+                                <input type='submit' class='btn btn-primary' value='Edit'>
+                                </form></td>";
+                        //    echo "<td><form method='post' action='patients.php'>
+                        //         <input type='hidden' name='id' id=''>
+                        //         <input type='submit' name='delete-patient' class='btn btn-primary' value='Delete'>
+                        //         </form></td>";
+                       }
+
+                    ?>
                     </tbody>
                   </table>
                 </div>

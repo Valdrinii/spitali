@@ -1,6 +1,16 @@
-<?php include "inc/navbar.php" ?>
+<?php include "inc/navbar.php";
+ include "inc/sidenav.php";
 
-<?php include "inc/sidenav.php" ?>
+ if (isset($_POST['add-doctor'])){
+  $doctor = new Doctor();
+  $doctor->firstname = $_POST['firstname'];
+  $doctor->lastname = $_POST['lastname'];
+  $doctor->role = $_POST['role'];
+  $doctor->email = $_POST['email'];
+  $doctor->password = $_POST['password'];
+  $doctor->save();
+}
+  ?>
       
       <!-- Main Content -->
       <div class="col-md-10">
