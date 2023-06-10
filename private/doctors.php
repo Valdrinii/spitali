@@ -16,8 +16,9 @@
                       <tr>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Email</th>
                         <th>Role</th>
+                        <th>Email</th>
+                        <th>Password</th>
                         <th>Created at</th>
                         <th>Updated at</th>
                         <th>Edit</th>
@@ -28,8 +29,9 @@
                       <tr>
                         <td>Filan</td>
                         <td>Fisteku</td>
-                        <td>filan.fisteku@gmail.com</td>
                         <td>1</td>
+                        <td>filan.fisteku@gmail.com</td>
+                        <td>123456</td>
                         <td>2021-03-05</td>
                         <td>2023-06-23</td>
                         <td><a href="edit-doctor.php"><button class="btn btn-primary">Edit</button></a></td>
@@ -38,11 +40,12 @@
                       <tr>
                         <td>Filan</td>
                         <td>Fisteku2</td>
-                        <td>filan.fisteku2@outlook.com</td>
                         <td>1</td>
-                        <td>2022-06-21</td>
-                        <td>2022-06-25</td>
-                        <td><a href="edit-doctor.html"><button class="btn btn-primary">Edit</button></a></td>
+                        <td>filan.fisteku2@gmail.com</td>
+                        <td>123456</td>
+                        <td>2021-03-05</td>
+                        <td>2023-06-23</td>
+                        <td><a href="edit-doctor.php"><button class="btn btn-primary">Edit</button></a></td>
                         <!--<td><button class="btn btn-primary">Delete</button></td>-->
                       </tr>
                     </tbody>

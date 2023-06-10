@@ -1,6 +1,18 @@
-<?php include "inc/navbar.php" ?>
+<?php 
+include "inc/navbar.php";
 
-<?php include "inc/sidenav.php" ?>
+include "inc/sidenav.php";
+
+ 
+$patients = Patient::orderBy("id","desc")->get();
+
+if (isset($_POST['id'])){
+    $patient = Patient::findOrFail($_POST['id']);
+}
+if (isset($_POST['delete-patient'])){
+    $patient->delete();
+}
+?>
 
 <!-- Main Content -->
     <div class="col-md-10">
@@ -25,26 +37,28 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Filan</td>
-                        <td>Fisteku</td>
-                        <td>12345678</td>
-                        <td>filan.fisteku@gmail.com</td>
-                        <td>2021-03-05</td>
-                        <td>2023-06-23</td>
-                        <td><a href="edit-patient.php"><button class="btn btn-primary">Edit</button></a></td>
-                        <!--<td><button class="btn btn-primary">Delete</button></td>-->
-                      </tr>
-                      <tr>
-                        <td>Filan</td>
-                        <td>Fisteku2</td>
-                        <td>87654321</td>
-                        <td>filan.fisteku2@outlook.com</td>
-                        <td>2022-06-21</td>
-                        <td>2022-06-25</td>
-                        <td><a href="edit-patient.php"><button class="btn btn-primary">Edit</button></a></td>
-                        <!--<td><button class="btn btn-primary">Delete</button></td>-->
-                      </tr>
+                      
+                    <?php
+                    
+                       foreach($patients as $patient){
+                           echo "<tr>";
+                           echo "<td>$patient->firstname</td>";
+                           echo "<td>$patient->lastname</td>";
+                           echo "<td>$patient->identity_number</td>";
+                           echo "<td>$patient->email</td>";
+                           echo "<td>$patient->created_at</td>";
+                           echo "<td>$patient->updated_at</td>";
+                           echo "<td><form method='post' action='edit-patient.php'>
+                                <input type='hidden' name='id' id='' value='$patient->id'>
+                                <input type='submit' class='btn btn-primary' value='Edit'>
+                                </form></td>";
+                        //    echo "<td><form method='post' action='patients.php'>
+                        //         <input type='hidden' name='id' id=''>
+                        //         <input type='submit' name='delete-patient' class='btn btn-primary' value='Delete'>
+                        //         </form></td>";
+                       }
+
+                    ?>
                     </tbody>
                   </table>
                 </div>
