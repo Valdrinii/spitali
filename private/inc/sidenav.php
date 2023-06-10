@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-
-  <link rel="stylesheet" href="style.css">
-  <title>Admin</title>
-</head>
-<body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">Admin</a>
-    
-    </div>
-  </nav>
-
-  <div>
+<div>
     <div class="row">
       <!-- Sidebar -->
       <div class="col-md-2">
@@ -25,7 +6,7 @@
           <ul class="nav flex-column">
             <!-- Sidebar Item 1 -->
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Dashboard</a>
+              <a class="nav-link" href="index.php">Dashboard</a>
             </li>
             <!-- Patients -->
             <li class="nav-item dropdown">
@@ -33,8 +14,8 @@
                 Patients
               </a>
               <ul class="dropdown-menu" aria-labelledby="dropdownLink">
-                <li><a class="dropdown-item" href="add-patient.html">Add Patient</a></li>
-                <li><a class="dropdown-item" href="patients.html">View Patient</a></li>
+                <li><a class="dropdown-item" href="add-patient.php">Add Patient</a></li>
+                <li><a class="dropdown-item" href="patients.php">View Patient</a></li>
               </ul>
             </li>
             <!-- Doctors -->
@@ -43,8 +24,8 @@
                 Doctors
               </a>
               <ul class="dropdown-menu" aria-labelledby="dropdownLink">
-                <li><a class="dropdown-item" href="add-doctor.html">Add Doctor</a></li>
-                <li><a class="dropdown-item" href="doctors.html">View Doctors</a></li>
+                <li><a class="dropdown-item" href="add-doctor.php">Add Doctor</a></li>
+                <li><a class="dropdown-item" href="doctors.php">View Doctors</a></li>
               </ul>
             </li>
             <!-- Appointments -->
@@ -53,8 +34,8 @@
                 Appointments
               </a>
               <ul class="dropdown-menu" aria-labelledby="dropdownLink">
-                <li><a class="dropdown-item" href="add-appointment.html">Add Appointment</a></li>
-                <li><a class="dropdown-item" href="appointments.html">View Appointments</a></li>
+                <li><a class="dropdown-item" href="add-appointment.php">Add Appointment</a></li>
+                <li><a class="dropdown-item" href="appointments.php">View Appointments</a></li>
               </ul>
             </li>
             <!-- Departments -->
@@ -63,25 +44,13 @@
                 Departments
               </a>
               <ul class="dropdown-menu" aria-labelledby="dropdownLink">
-                <li><a class="dropdown-item" href="add-department.html">Add Department</a></li>
-                <li><a class="dropdown-item" href="departments.html">View Departments</a></li>
+                <li><a class="dropdown-item" href="add-department.php">Add Department</a></li>
+                <li><a class="dropdown-item" href="departments.php">View Departments</a></li>
               </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../index.html">Back</a>
+                <a class="nav-link" href="../index.php">Back</a>
               </li>
           </ul>
         </div>
       </div>
-      
-      <!-- Main Content -->
-      <div class="container-fluid col-md-9 pt-2">
-        <h1>Dashboard</h1>
-        <p>Welcome Administrator!</p>
-      </div>
-    </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
