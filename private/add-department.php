@@ -1,6 +1,18 @@
-<?php include "inc/navbar.php" ?>
+<?php 
+include "inc/navbar.php";
+include "inc/sidenav.php";
 
-<?php include "inc/sidenav.php" ?>
+$doctors = Doctor::get();
+
+if (isset($_POST['add-department'])){
+    $department = new Department();
+    $department->name = $_POST['name'];
+    $department->description = $_POST['description'];
+    $department->doctor_id = $_POST['doctor_id'];
+    $department->save();
+}
+
+?>
       
       <!-- Main Content -->
       <div class="col-md-10">
@@ -17,16 +29,23 @@
                   <div class="card-body">
                     <form method="post">
                       <div class="form-group my-2">
-                        <label class="small mb-1" for="firstname">Name:</label>
-                        <input class="form-control py-2" name="firstname" type="text" placeholder="Enter first name" />
+                        <label class="small mb-1" for="name">Name:</label>
+                        <input class="form-control py-2" name="name" type="text" placeholder="Enter first name" />
                       </div>
                       <div class="form-group my-2">
                         <label class="small mb-1" for="description">Description:</label>
                         <input class="form-control py-2" name="description" id="description" type="text" placeholder="Enter description" />
                       </div>
                       <div class="form-group my-2">
-                        <label class="small mb-1" for="doctor">Doctor:</label>
-                        <input class="form-control py-2" name="doctor" id="doctor" type="text" placeholder="Enter doctor" />
+                      <label class="small mb-1">Doctor :</label>
+                            <select name="doctor_id" class="form-control" id="">
+                                <option value="" class="">Choose a doctor:</option>
+                                <?php
+                                    foreach($doctors as $doctor){
+                                        echo "<option value='$doctor->id'>$doctor->firstname $doctor->lastname</option>";
+                                    }
+                                ?>
+                            </select>
                       </div>
                       <div class="my-2 py-2">
                         <input class="btn btn-primary" id="login" value="Create Department" type="submit" name="add-department" />

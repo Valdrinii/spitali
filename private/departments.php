@@ -1,6 +1,10 @@
-<?php include "inc/navbar.php" ?>
+<?php 
+include "inc/navbar.php"; 
+include "inc/sidenav.php";
 
-<?php include "inc/sidenav.php" ?>
+$departments = Department::with('doctor')->get();
+
+?>
 
 <!-- Main Content -->
     <div class="col-md-10">
@@ -24,24 +28,21 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Filan Fisteku</td>
-                        <td>Kontroll</td>
-                        <td>Filan Fisteku</td>
-                        <td>2021-03-05</td>
-                        <td>2023-06-23</td>
-                        <td><a href="edit-department.php"><button class="btn btn-primary">Edit</button></a></td>
-                        <!--<td><button class="btn btn-primary">Delete</button></td>-->
-                      </tr>
-                      <tr>
-                        <td>Filan Fisteku</td>
-                        <td>Kontroll</td>
-                        <td>Filan Fisteku</td>
-                        <td>2021-03-05</td>
-                        <td>2023-06-23</td>
-                        <td><a href="edit-department.php"><button class="btn btn-primary">Edit</button></a></td>
-                        <!--<td><button class="btn btn-primary">Delete</button></td>-->
-                      </tr>
+                      <?php
+                       foreach($departments as $department){
+                           echo "<tr>";
+                           echo "<td> $department->name</td>";
+                           echo "<td>$department->description</td>";
+                           echo "<td>" . $department->doctor->firstname . " " . $department->doctor->lastname ."</td>";
+                           echo "<td>$department->created_at</td>";
+                           echo "<td>$department->updated_at</td>";
+                           echo "<td><form method='post' action='edit-department.php'>
+                                <input type='hidden' name='id' id='' value='$department->id'>
+                                <input type='submit' class='btn btn-primary' value='Edit'>
+                                </form></td>";
+                       }
+
+                    ?>
                     </tbody>
                   </table>
                 </div>

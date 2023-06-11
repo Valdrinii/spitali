@@ -1,6 +1,27 @@
-<?php include "inc/navbar.php" ?>
+<?php 
+include "inc/navbar.php";
+include "inc/sidenav.php"; 
 
-<?php include "inc/sidenav.php" ?>
+$doctors = Doctor::get();
+$department=null;
+
+if (isset($_POST['id'])){
+    $department = Department::findOrFail($_POST['id']);
+}
+
+
+if (isset($_POST['edit-department'])){
+    $department->name = $_POST['name'];
+    $department->description = $_POST['description'];
+    $department->doctor_id = $_POST['doctor_id'];
+    $department->save();
+}
+
+if (isset($_POST['delete-department'])){
+    $department->delete();
+}
+
+?>
       
       <!-- Main Content -->
       <div class="col-md-10">
@@ -13,21 +34,30 @@
                   <div class="card-header">
                     <h3 class="text-center font-weight-light my-2">Edit Department</h3>
                   </div>
-        
                   <div class="card-body">
-                    <form method="post">
-                        <div class="form-group my-2">
-                            <label class="small mb-1" for="firstname">Name:</label>
-                            <input class="form-control py-2" name="firstname" type="text" placeholder="Enter first name" />
-                          </div>
-                          <div class="form-group my-2">
-                            <label class="small mb-1" for="description">Description:</label>
-                            <input class="form-control py-2" name="description" id="description" type="text" placeholder="Enter description" />
-                          </div>
-                          <div class="form-group my-2">
-                            <label class="small mb-1" for="doctor">Doctor:</label>
-                            <input class="form-control py-2" name="doctor" id="doctor" type="text" placeholder="Enter doctor" />
-                          </div>
+                    <form method="post" action="">
+                    <div class="form-group">
+                    <input type='hidden' name='id' id='' value='<?php echo $department->id?>'>
+                        <div class="form-group">
+                            <label class="small mb-1" for="date">Name :</label>
+                            <input class="form-control py-4" name="name" type="text" value='<?php echo $department->name?>' placeholder="Enter department's name" />
+                        </div>
+                        <div class="form-group">
+                            <label class="small mb-1" for="phone">Description :</label>
+                            <input class="form-control py-4" name="description" value='<?php echo $department->description?>' type="text" placeholder="Enter description" />
+                        </div>
+                        <div class="form-group">
+                            <label class="small mb-1">Doctor :</label>
+                            <select name="doctor_id" class="form-control" id="">
+                            
+                                <?php
+                                foreach($doctors as $doctor){
+                                    echo "<option value='$doctor->id'>$doctor->firstname $doctor->lastname</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                
                       <div class="my-2 py-2">
                         <input class="btn btn-primary" value="Edit department"
                         type="submit" name="edit-department"/>
