@@ -1,4 +1,22 @@
-<?php include "inc/header.php" ?>
+<?php 
+include "inc/header.php";
+
+$doctors = Doctor::get();
+$patients = Patient::get();
+
+if (isset($_POST['add-appointment'])){
+    $appointment = new Appointment();
+    $appointment->firstname = $_POST['firstname'];
+    $appointment->lastname = $_POST['lastname'];
+    $appointment->description = $_POST['description'];
+    $appointment->date = $_POST['date'];
+    $appointment->time = $_POST['time'];
+    $appointment->doctor_id = $_POST['doctor_id'];
+    $appointment->save();
+}
+
+?>
+
 
 <!-- Appointment Start -->
 <div class="container-fluid bg-primary my-5 py-5">
@@ -16,50 +34,50 @@
             <div class="col-lg-6">
                 <div class="bg-white text-center rounded p-5">
                     <h1 class="mb-4">Book An Appointment</h1>
-                    <form method="post">
-                        <div class="row g-3">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input type="text" name="firstname" class="form-control bg-light border-0" placeholder="Your First Name" style="height: 55px;">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input type="text" name="lastname" class="form-control bg-light border-0" placeholder="Your Last Name" style="height: 55px;">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <textarea name="description" class="form-control bg-light border-0" placeholder="Description" style="height: 55px;"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input type="date" name="date" class="form-control bg-light border-0 datetimepicker-input" placeholder="Date" data-target="#date" data-toggle="datetimepicker" style="height: 55px;">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input type="time" name="time" class="form-control bg-light border-0 datetimepicker-input" placeholder="Time" data-target="#time" data-toggle="datetimepicker" style="height: 55px;">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <select name="doctor_id" class="form-select bg-light border-0" style="height: 55px;">
-                                        <option>Choose a Doctor:</option>
-                                        <!-- Replace the following option tags with your dynamic data -->
-                                        <option value="1">Doctor 1</option>
-                                        <option value="2">Doctor 2</option>
-                                        <option value="3">Doctor 3</option>
-                                        <!-- End of dynamic data -->
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" name="add-appointment" type="submit">Make An Appointment</button>
-                            </div>
-                        </div>
-                    </form>
+                    <?php
+                echo '<form method="post">';
+                echo '<div class="row g-3">';
+                echo '<div class="col-lg-6">';
+                echo '<div class="form-group">';
+                echo '<input type="text" name="firstname" class="form-control bg-light border-0" placeholder="Your First Name" style="height: 55px;">';
+                echo '</div>';
+                echo '</div>';
+                echo '<div class="col-lg-6">';
+                echo '<div class="form-group">';
+                echo '<input type="text" name="lastname" class="form-control bg-light border-0" placeholder="Your Last Name" style="height: 55px;">';
+                echo '</div>';
+                echo '</div>';
+                echo '<div class="col-lg-6">';
+                echo '<div class="form-group">';
+                echo '<textarea name="description" class="form-control bg-light border-0" placeholder="Description" style="height: 55px;"></textarea>';
+                echo '</div>';
+                echo '</div>';
+                echo '<div class="col-lg-6">';
+                echo '<div class="form-group">';
+                echo '<input type="date" name="date" class="form-control bg-light border-0 datetimepicker-input" placeholder="Date" data-target="#date" data-toggle="datetimepicker" style="height: 55px;">';
+                echo '</div>';
+                echo '</div>';
+                echo '<div class="col-lg-6">';
+                echo '<div class="form-group">';
+                echo '<input type="time" name="time" class="form-control bg-light border-0 datetimepicker-input" placeholder="Time" data-target="#time" data-toggle="datetimepicker" style="height: 55px;">';
+                echo '</div>';
+                echo '</div>';
+                echo '<div class="col-lg-6">';
+                echo '<div class="form-group">';
+                echo '<select name="doctor_id" class="form-select bg-light border-0" style="height: 55px;">';
+                echo '<option>Choose a Doctor:</option>';
+                foreach ($doctors as $doctor) {
+                    echo '<option value="'.$doctor->id.'">' . $doctor->id . '. ' . $doctor->firstname . ' ' . $doctor->lastname . '</option>';
+                }
+                echo '</select>';
+                echo '</div>';
+                echo '</div>';
+                echo '<div class="col-12">';
+                echo '<button class="btn btn-primary w-100 py-3" name="add-appointment" type="submit">Make An Appointment</button>';
+                echo '</div>';
+                echo '</div>';
+                echo '</form>';
+                ?>
                 </div>
             </div>
         </div>

@@ -40,4 +40,3 @@
 
 <!-- Team End -->
 
-<?php include "inc/footer.php" ?>

@@ -1,3 +1,4 @@
+<?php require "private/bootstrap.php";?>
 <html>
 <head>
 <link rel="stylesheet" href="bootstrap/style.css">
