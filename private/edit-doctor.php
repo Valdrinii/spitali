@@ -34,40 +34,40 @@ if (isset($_POST['delete-doctor'])){
                   </div>
         
                   <div class="card-body">
-                <form method="post" >
-                    <div class="form-group">
-                        <input type='hidden' name='id' id='' value='<?php echo $doctor->id?>'>
-                            <label class="small mb-1" for="firstname">First Name :</label>
-                            <input class="form-control py-4" name="firstname"type="text" 
-                            value='<?php echo $doctor->firstname?>' placeholder="Enter first name" />
-                        </div>
-                        <div class="form-group">
-                            <label class="small mb-1" >Last Name :</label>
-                            <input class="form-control py-4" name="lastname" type="text" 
-                            value='<?php echo $doctor->lastname?>' placeholder="Enter last name" />
-                        </div>
-                        <div class="form-group">
-                            <label class="small mb-1" for="phone">Role :</label>
-                            <input class="form-control py-4" name="role" type="text"
-                            value='<?php echo $doctor->role?>' placeholder="Enter role" />
-                        </div>
-                        <div class="form-group">
-                            <label class="small mb-1" for="phone">Email :</label>
-                            <input class="form-control py-4" name="email" id="email" type="email"
-                            value='<?php echo $doctor->email?>' placeholder="Enter email" />
-                        </div>
-                        <div class="form-group">
-                            <label class="small mb-1" for="phone">Password :</label>
-                            <input class="form-control py-4" name="password" id="email" type="password"
-                            value='<?php echo $doctor->password?>' placeholder="Enter password" />
-                        </div>
-                        <input class="btn btn-primary"  id="login" value="Edit Doctor"
-                         type="submit" name="edit-doctor"/>
-                        <input class="btn btn-primary"  id="login" value="Delete Doctor"
-                         type="submit" name="delete-doctor"/>
-                    </form>
-                </div>
-              
+                    <form method="post">
+                      <div class="form-group my-2">
+                      <input type='hidden' name='id' id='' value='<?php echo $doctor->id?>'>
+
+                        <label class="small mb-1" for="firstname">First Name:</label>
+                        <input class="form-control py-2" name="firstname" type="text" 
+                        value='<?php echo $doctor->firstname?>' placeholder="Enter first name" />
+                      </div>
+                      <div class="form-group my-2">
+                        <label class="small mb-1" for="lastname">Last Name:</label>
+                        <input class="form-control py-2" name="lastname" type="text" 
+                        value='<?php echo $doctor->lastname?>' placeholder="Enter last name" />
+                      </div>
+                      <div class="form-group my-2">
+                        <label class="small mb-1" for="role">Role:</label>
+                        <input class="form-control py-2" name="role" id="role" type="text" 
+                        value='<?php echo $doctor->role?>' placeholder="Enter role" />
+                      </div>
+                      <div class="form-group my-2">
+                        <label class="small mb-1" for="email">Email:</label>
+                        <input class="form-control py-2" name="email" id="email" type="email" 
+                        value='<?php echo $doctor->email?>' placeholder="Enter email" />
+                      </div>
+                      <div class="form-group my-2">
+                        <label class="small mb-1" for="password">Password:</label>
+                        <input class="form-control py-2" name="password" id="password" type="password" 
+                        value='<?php echo $doctor->password?>' placeholder="Enter password" />
+                      </div>
+                      <div class="my-2 py-2">
+                        <input class="btn btn-primary" value="Edit Doctor"
+                        type="submit" name="edit-doctor"/>
+                       <input class="btn btn-primary" value="Delete Doctor"
+                        type="submit" name="delete-doctor"/>
+                      </div>
                     </form>
                   </div>
                 </div>

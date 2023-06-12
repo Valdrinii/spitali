@@ -1,7 +1,22 @@
-<?php include "inc/navbar.php" ?>
+<?php
+include "inc/navbar.php";
+include "inc/sidenav.php";
 
-<?php include "inc/sidenav.php" ?>
-      
+$doctors = Doctor::get();
+$patients = Patient::get();
+
+if (isset($_POST['add-appointment'])){
+    $appointment = new Appointment();
+    $appointment->firstname = $_POST['firstname'];
+    $appointment->lastname = $_POST['lastname'];
+    $appointment->description = $_POST['description'];
+    $appointment->date = $_POST['date'];
+    $appointment->time = $_POST['time'];
+    $appointment->doctor_id = $_POST['doctor_id'];
+    $appointment->save();
+}
+
+?>    
       <!-- Main Content -->
       <div class="col-md-10">
         <main>
@@ -26,16 +41,23 @@
                           </div>
                           <div class="form-group my-2">
                             <label class="small mb-1" for="date">Date:</label>
-                            <input class="form-control py-2" name="date" id="date" type="text" placeholder="Enter date" />
+                            <input class="form-control py-2" name="date" id="date" type="date" placeholder="Enter date" />
                           </div>
                           <div class="form-group my-2">
                             <label class="small mb-1" for="time">Time:</label>
-                            <input class="form-control py-2" name="time" id="time" type="text" placeholder="Enter time" />
+                            <input class="form-control py-2" name="time" id="time" type="time" placeholder="Enter time" />
                           </div>
-                          <div class="form-group my-2">
-                            <label class="small mb-1" for="doctor">Doctor:</label>
-                            <input class="form-control py-2" name="doctor" id="doctor" type="text" placeholder="Enter doctor" />
-                          </div>
+                          <div class="form-group">
+                            <label class="small mb-1">Doctor :</label>
+                            <select name="doctor_id" class="form-control" id="">
+                                <option value="" class="">Choose a doctor:</option>
+                                <?php
+                                    foreach($doctors as $doctor){
+                                        echo "<option value='$doctor->id'>$doctor->firstname $doctor->lastname</option>";
+                                    }
+                                ?>
+                            </select>
+                        </div>
                           <div class="form-group my-2">
                             <label class="small mb-1" for="description">Description:</label>
                             <input class="form-control py-2" name="description" id="description" type="text" placeholder="Enter description" />

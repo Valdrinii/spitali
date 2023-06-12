@@ -30,6 +30,7 @@ if (isset($_POST['delete-patient'])){
                         <th>Last Name</th>
                         <th>Identity Number</th>
                         <th>Email</th>
+                        <th>Password</th>
                         <th>Created at</th>
                         <th>Updated at</th>
                         <th>Edit</th>
@@ -46,6 +47,7 @@ if (isset($_POST['delete-patient'])){
                            echo "<td>$patient->lastname</td>";
                            echo "<td>$patient->identity_number</td>";
                            echo "<td>$patient->email</td>";
+                           echo "<td>$patient->password</td>";
                            echo "<td>$patient->created_at</td>";
                            echo "<td>$patient->updated_at</td>";
                            echo "<td><form method='post' action='edit-patient.php'>

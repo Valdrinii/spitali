@@ -43,8 +43,9 @@
                            echo "<tr>";
                            echo "<td>$doctor->firstname</td>";
                            echo "<td>$doctor->lastname</td>";
-                           echo "<td>$doctor->email</td>";
                            echo "<td>$doctor->role</td>";
+                           echo "<td>$doctor->email</td>";
+                           echo "<td>$doctor->password</td>";
                            echo "<td>$doctor->created_at</td>";
                            echo "<td>$doctor->updated_at</td>";
                            echo "<td><form method='post' action='edit-doctor.php'>

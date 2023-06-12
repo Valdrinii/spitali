@@ -1,7 +1,12 @@
-<?php include "inc/navbar.php" ?>
+<?php
+include "inc/navbar.php";
+include "inc/sidenav.php";
 
-<?php include "inc/sidenav.php" ?>
 
+$appointments = Appointment::with('patient')->with('doctor')->get();
+// dd($appointments);
+
+?>
 <!-- Main Content -->
     <div class="col-md-10">
       <div id="layoutSidenav_content">
@@ -26,29 +31,28 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Filan Fisteku</td>
-                        <td>2023-06-23</td>
-                        <td>17:00</td>
-                        <td>Filan Fisteku</td>
-                        <td>Kontroll</td>
-                        <td>2021-03-05</td>
-                        <td>2023-06-23</td>
-                        <td><a href="edit-appointments.php"><button class="btn btn-primary">Edit</button></a></td>
-                        <!--<td><button class="btn btn-primary">Delete</button></td>-->
-                      </tr>
-                      <tr>
-                        <td>Filan Fisteku</td>
-                        <td>2023-06-23</td>
-                        <td>17:00</td>
-                        <td>Filan Fisteku</td>
-                        <td>Kontroll</td>
-                        <td>2021-03-05</td>
-                        <td>2023-06-23</td>
-                        <td><a href="edit-appointments.php"><button class="btn btn-primary">Edit</button></a></td>
-                        <!--<td><button class="btn btn-primary">Delete</button></td>-->
-                      </tr>
-                    </tbody>
+                      <?php
+                            foreach($appointments as $appointment){
+                                echo "<tr>";
+                                echo "<td>" . $appointment->firstname . " " . $appointment->lastname . "</td>";                       
+                                echo "<td>$appointment->date</td>";
+                                echo "<td>$appointment->time</td>";
+                                echo "<td>" . $appointment->doctor->firstname . " " . $appointment->doctor->lastname . "</td>";
+                                echo "<td>$appointment->description</td>";
+                                echo "<td>$appointment->created_at</td>";
+                                echo "<td>$appointment->updated_at</td>";
+                                echo "<td><form method='post' action='edit-appointment.php'>
+                                      <input type='hidden' name='id' id='' value='$appointment->id'>
+                                      <input type='submit' class='btn btn-primary' value='Edit'>
+                                      </form></td>";
+                              //    echo "<td><form method='post' action='patients.php'>
+                              //         <input type='hidden' name='id' id=''>
+                              //         <input type='submit' name='delete-patient' class='btn btn-primary' value='Delete'>
+                              //         </form></td>";
+                            }
+
+                          ?>
+                  </tbody>
                   </table>
                 </div>
               </div>

@@ -38,6 +38,7 @@ if (isset($_POST['delete-department'])){
                     <form method="post" action="">
                     <div class="form-group">
                     <input type='hidden' name='id' id='' value='<?php echo $department->id?>'>
+                    
                         <div class="form-group">
                             <label class="small mb-1" for="date">Name :</label>
                             <input class="form-control py-4" name="name" type="text" value='<?php echo $department->name?>' placeholder="Enter department's name" />
@@ -48,13 +49,13 @@ if (isset($_POST['delete-department'])){
                         </div>
                         <div class="form-group">
                             <label class="small mb-1">Doctor :</label>
-                            <select name="doctor_id" class="form-control" id="">
-                            
-                                <?php
-                                foreach($doctors as $doctor){
-                                    echo "<option value='$doctor->id'>$doctor->firstname $doctor->lastname</option>";
+                            <select name="doctor_id" class="form-control">
+                              <?php
+                              foreach ($doctors as $doctor) {
+                                $selected = ($doctor->id == $department->doctor_id) ? 'selected' : '';
+                                echo "<option value='$doctor->id' $selected>$doctor->firstname $doctor->lastname</option>";
                                 }
-                                ?>
+                              ?>
                             </select>
                         </div>
                 
