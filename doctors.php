@@ -14,23 +14,31 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <tbody>
+                                    <?php
+                                    $departments = Department::get();
+                                    $doctors = Doctor::get();
                                     
-                                    <tr>
-                                        <td>Department 1</td>
-                                        <td>Description 1</td>
-                                        <td>Doctor 1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Department 2</td>
-                                        <td>Description 2</td>
-                                        <td>Doctor 2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Department 3</td>
-                                        <td>Description 3</td>
-                                        <td>Doctor 3</td>
-                                    </tr>
+                                    foreach ($departments as $department) {
+                                        echo "<tr>";
+                                        echo "<td>" . $department->name . "</td>";
+                                        echo "<td>" . $department->description . "</td>";
                                     
+                                        // Find the corresponding doctor for the current department
+                                        $doctor = $doctors->firstWhere('id', $department->doctor_id);
+                                    
+                                        if ($doctor) {
+                                            echo "<td>" . $doctor->firstname . " " . $doctor->lastname ."</td>";
+                                            
+                                        } else {
+                                            echo "<td>N/A</td>";
+                                        }
+                                    
+                                        echo "</tr>";
+                                    }
+                                
+                                    ?>
+                               </tbody>
                                 </tbody>
                             </table>
                         </div>
