@@ -2,10 +2,37 @@
 include "inc/navbar.php";
 include "inc/sidenav.php";
 
+if(isset($_POST['import'])) {
+    if(isset($_FILES['file'])) {
+        $file = $_FILES['file'];
+        $fileName = $file['name'];
+        $fileTmpName = $file['tmp_name'];
+
+        $fileExt = pathinfo($fileName, PATHINFO_EXTENSION);
+        if($fileExt != 'csv') {
+            echo "Only CSV files are allowed.";
+            exit();
+        }
+
+        $csvFile = fopen($fileTmpName, 'r');
+        if($csvFile !== FALSE) {
+            while(($data = fgetcsv($csvFile, 1000, ",")) !== FALSE) {
+                var_dump($data);
+            }
+            fclose($csvFile);
+
+            echo "Import successful.";
+        } else {
+            echo "Failed to open CSV file.";
+        }
+    } else {
+        echo "No file uploaded.";
+    }
+}
+
 $appointments = Appointment::with('patient')->with('doctor')->get();
 ?>
 
-<!-- Main Content -->
 <div class="col-md-10">
     <div id="layoutSidenav_content">
         <main>
